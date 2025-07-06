@@ -11,7 +11,6 @@ from folium.plugins import HeatMap
 from streamlit_folium import folium_static
 import pandas as pd
 from io import StringIO
-import setup_path  # ⬅️ This adds the root to path dynamically
 
 from logic.routing import get_optimized_route
 
