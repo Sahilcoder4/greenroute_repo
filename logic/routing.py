@@ -13,15 +13,23 @@ if not ORS_API_KEY:
 ors_client = openrouteservice.Client(key=ORS_API_KEY)
 geolocator = Nominatim(user_agent="greenroute_app")
 
+# def get_coordinates(city_name):
+#     try:
+#         location = geolocator.geocode(city_name, timeout=10)
+#         if location:
+#             return [location.latitude, location.longitude]
+#         else:
+#             raise Exception(f"Location not found for: {city_name}")
+#     except GeocoderTimedOut:
+#         raise Exception(f"Geocoding timed out for: {city_name}")
+
 def get_coordinates(city_name):
-    try:
-        location = geolocator.geocode(city_name, timeout=10)
-        if location:
-            return [location.latitude, location.longitude]
-        else:
-            raise Exception(f"Location not found for: {city_name}")
-    except GeocoderTimedOut:
-        raise Exception(f"Geocoding timed out for: {city_name}")
+    geolocator = Nominatim(user_agent="greenroute")
+    location = geolocator.geocode(city_name)
+    if not location:
+        raise Exception(f"Could not geocode: {city_name}")
+    return [location.longitude, location.latitude]  # [lng, lat]
+
 
 def extract_route_info(route):
     route_coords = [[lat, lon] for lon, lat in route["geometry"]["coordinates"]]
