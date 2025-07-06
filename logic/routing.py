@@ -3,6 +3,8 @@ from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut
 import os
 from dotenv import load_dotenv
+from opencage.geocoder import OpenCageGeocode
+import streamlit as st
 
 load_dotenv()
 
@@ -13,22 +15,28 @@ if not ORS_API_KEY:
 ors_client = openrouteservice.Client(key=ORS_API_KEY)
 geolocator = Nominatim(user_agent="greenroute_app")
 
-# def get_coordinates(city_name):
-#     try:
-#         location = geolocator.geocode(city_name, timeout=10)
-#         if location:
-#             return [location.latitude, location.longitude]
-#         else:
-#             raise Exception(f"Location not found for: {city_name}")
-#     except GeocoderTimedOut:
-#         raise Exception(f"Geocoding timed out for: {city_name}")
-
 def get_coordinates(city_name):
-    geolocator = Nominatim(user_agent="greenroute")
-    location = geolocator.geocode(city_name)
-    if not location:
-        raise Exception(f"Could not geocode: {city_name}")
-    return [location.longitude, location.latitude]  # [lng, lat]
+    try:
+        key = st.secrets["OPENCAGE_API_KEY"]
+    except Exception:
+        raise Exception("🚨 OPENCAGE_API_KEY not found in Streamlit Secrets!")
+
+    geocoder = OpenCageGeocode(key)
+    results = geocoder.geocode(city_name)
+
+    if not results:
+        raise Exception(f"Could not geocode '{city_name}'. Try another city.")
+
+    lat = results[0]['geometry']['lat']
+    lng = results[0]['geometry']['lng']
+    return [lng, lat]  # ORS expects [lon, lat]
+
+# def get_coordinates(city_name):
+#     geolocator = Nominatim(user_agent="greenroute")
+#     location = geolocator.geocode(city_name)
+#     if not location:
+#         raise Exception(f"Could not geocode: {city_name}")
+#     return [location.longitude, location.latitude]  # [lng, lat]
 
 
 def extract_route_info(route):
