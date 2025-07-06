@@ -2,9 +2,6 @@ import openrouteservice
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut
 import os
-from opencage.geocoder import OpenCageGeocode
-import streamlit as st
-
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -17,15 +14,14 @@ ors_client = openrouteservice.Client(key=ORS_API_KEY)
 geolocator = Nominatim(user_agent="greenroute_app")
 
 def get_coordinates(city_name):
-    key = st.secrets["OPENCAGE_API_KEY"]
-    geocoder = OpenCageGeocode(key)
-    results = geocoder.geocode(city_name)
-    if results and len(results):
-        lat = results[0]['geometry']['lat']
-        lng = results[0]['geometry']['lng']
-        return [lng, lat]  # ORS expects [longitude, latitude]
-    else:
-        raise Exception(f"Could not geocode: {city_name}")
+    try:
+        location = geolocator.geocode(city_name, timeout=10)
+        if location:
+            return [location.latitude, location.longitude]
+        else:
+            raise Exception(f"Location not found for: {city_name}")
+    except GeocoderTimedOut:
+        raise Exception(f"Geocoding timed out for: {city_name}")
 
 def extract_route_info(route):
     route_coords = [[lat, lon] for lon, lat in route["geometry"]["coordinates"]]
