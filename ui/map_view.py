@@ -1,10 +1,8 @@
+
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '.')))
 
-
-
-import os
 import streamlit as st
 import folium
 from folium.plugins import HeatMap
@@ -13,7 +11,6 @@ import pandas as pd
 from io import StringIO
 
 from logic.routing import get_optimized_route
-
 from logic.emissions import calculate_emissions
 from logic.gemini_explainer import ask_gemini
 
@@ -42,9 +39,6 @@ vehicle_type = st.selectbox("Vehicle Type", [
     "Flatbed Truck",
     "General Cargo Truck"
 ])
-
-
-
 fuel_type = st.selectbox("Fuel Type", [
     "Diesel",
     "Petrol",
@@ -54,10 +48,9 @@ fuel_type = st.selectbox("Fuel Type", [
     "Electric",
     "Hybrid"
 ])
-
 region = st.selectbox("Region", [
-    "Europe & South America", "North America", "China"])  # or from df["Region"].unique()
-
+    "Europe & South America", "North America", "China"
+])
 
 load_tons = st.slider("Load (tons)", 1.0, 40.0, 10.0)
 
@@ -73,29 +66,35 @@ if st.button("Generate Route and Emissions"):
         route_coords = selected_route["coordinates"]
         total_distance_km = selected_route["distance_km"]
 
+        if not route_coords or len(route_coords) < 2:
+            st.error("❌ Route could not be generated.")
+            st.stop()
+
         sampled_coords = route_coords[::10] + [route_coords[-1]]
         segment_distance = round(total_distance_km / len(sampled_coords), 2)
 
         city_data = []
         cumulative = 0
         for idx, [lat, lon] in enumerate(sampled_coords):
-            co2 = calculate_emissions(vehicle_type, fuel_type, segment_distance, load_tons, region)
-            cumulative += co2["WTW"]
-            city_data.append({
-                "city": f"Point {idx+1}",
-                "lat": lat,
-                "lon": lon,
-                "Vehicle Type": vehicle_type,
-                "Fuel Type": fuel_type,
-                "Region": region,
-                "Segment Distance (km)": segment_distance,
-                "WTT (kg)": round(co2["WTT"], 2),
-                "TTW (kg)": round(co2["TTW"], 2),
-                "WTW (kg)": round(co2["WTW"], 2),
-                "co2": round(cumulative, 2)  # ✅ now shows cumulative!
-            })
+            try:
+                co2 = calculate_emissions(vehicle_type, fuel_type, segment_distance, load_tons, region)
+                cumulative += co2["WTW"]
+                city_data.append({
+                    "city": f"Point {idx+1}",
+                    "lat": lat,
+                    "lon": lon,
+                    "Vehicle Type": vehicle_type,
+                    "Fuel Type": fuel_type,
+                    "Region": region,
+                    "Segment Distance (km)": segment_distance,
+                    "WTT (kg)": round(co2["WTT"], 2),
+                    "TTW (kg)": round(co2["TTW"], 2),
+                    "WTW (kg)": round(co2["WTW"], 2),
+                    "co2": round(cumulative, 2)
+                })
+            except Exception as e:
+                st.warning(f"Emission error at point {idx+1}: {e}")
 
-        
         st.session_state.route_data = route_data
         st.session_state.city_data = city_data
         st.session_state.total_distance_km = total_distance_km
@@ -133,15 +132,11 @@ if st.session_state.route_data and st.session_state.city_data:
     st.write(f"**Load:** {load_tons} tons")
     st.write(f"**Estimated WTW CO₂ Emission:** {city_data[-1]['co2']} kg")
 
-        # -------------------------------
-    # ⚖️ Compare emissions by fuel
-    # -------------------------------
+    # Compare emissions by fuel
     st.subheader("⚖️ CO₂ Comparison Across Fuel Types")
     fuel_options = ["diesel", "petrol", "cng", "lng", "electric"]
     other_fuels = [f for f in fuel_options if f != fuel_type.lower()]
-
     emissions_comparison = {}
-
     for alt_fuel in other_fuels:
         try:
             alt_emissions = sum([
@@ -151,12 +146,9 @@ if st.session_state.route_data and st.session_state.city_data:
             emissions_comparison[alt_fuel.title()] = round(alt_emissions, 2)
         except:
             emissions_comparison[alt_fuel.title()] = None
-            # st.warning(f"No data for {vehicle_type} with {alt_fuel.title()}")
 
-    # Show result as a bar chart
-    # ✅ Store comparison results in session state
     st.session_state.emissions_comparison = emissions_comparison
-    st.bar_chart({k: v for k, v in st.session_state.emissions_comparison.items() if v is not None})
+    st.bar_chart({k: v for k, v in emissions_comparison.items() if v is not None})
 
     st.info(st.session_state.route_data["note"])
 
@@ -166,27 +158,20 @@ if st.session_state.route_data and st.session_state.city_data:
         baseline_segments = baseline_coords[::10] + [baseline_coords[-1]]
         baseline_segment_distance = round(baseline_distance / len(baseline_segments), 2)
 
-        # Recalculate baseline emissions freshly
         baseline_emissions = 0
         for _ in baseline_segments:
             co2 = calculate_emissions(vehicle_type, fuel_type, baseline_segment_distance, load_tons, region)
             baseline_emissions += co2["WTW"]
 
-        # ✅ Use only final cumulative optimized emission
         optimized_emissions = city_data[-1]["co2"]
-
         savings = round((baseline_emissions - optimized_emissions) / baseline_emissions * 100, 2)
         st.success(f"🚀 Optimization saved {savings}% CO₂ vs baseline.")
-    # === Show comparison chart always, even after rerun ===
-    
-
 
 # Gemini Panel
 st.subheader("🤖 Ask GreenRoute AI (Gemini)")
-user_question = st.text_input("Ask anything about this trip...")
-
+user_question = st.text_input("Ask anything about this trip.")
 if user_question and st.session_state.city_data:
-    with st.spinner("Thinking..."):
+    with st.spinner("Thinking."):
         try:
             trip_context = (
                 f"Vehicle: {vehicle_type}, Fuel: {fuel_type}, "
