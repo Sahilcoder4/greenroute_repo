@@ -1,0 +1,102 @@
+Region,Vehicle Type,Fuel,Combined Load Factor (%),Empty Running (%),Fuel Intensity (kg/t-km),Fuel Intensity (l/t-km),Energy Intensity (kWh/t-km),WTT (g CO2e/t-km),TTW (g CO2e/t-km),WTW (g CO2e/t-km)
+North America,Van (<3.5t),Unknown,,,0.22,0.26,,153,756,909
+North America,General,Unknown,,,0.027,0.031,,18,91,110
+North America,Auto Carrier,Unknown,,,0.028,0.033,,19,96,115
+North America,Dray,Unknown,,,0.024,0.028,,17,82,98
+North America,Expedited,Unknown,,,0.177,0.209,,123,607,730
+North America,Flatbed,Unknown,,,0.02,0.024,,14,70,84
+North America,Heavy Bulk,Unknown,,,0.023,0.027,,16,77,93
+North America,LTL/Dry Van,Unknown,,,0.056,0.067,,39,194,233
+North America,Mixed,Unknown,,,0.027,0.031,,18,91,110
+North America,Moving,Unknown,,,0.097,0.114,,67,332,399
+North America,Package,Unknown,,,0.237,0.28,,164,815,979
+North America,Refrigerated,Unknown,,,0.023,0.027,,16,80,96
+North America,Specialized,Unknown,,,0.032,0.038,,22,111,133
+North America,Tanker,Unknown,,,0.017,0.02,,12,58,70
+North America,TL/Dry Van,Unknown,,,0.023,0.027,,16,79,95
+Europe & South America,Van < 3.5t,Diesel,36,,0.201,0.242,,195,647,842
+Europe & South America,Van < 3.5t,Petrol,24,,0.239,0.322,,244,763,1007
+Europe & South America,Van < 3.5t,CNG,36,,0.235,,,243,648,892
+Europe & South America,Van < 3.5t,LPG,36,,0.234,0.425,,246,713,959
+Europe & South America,Rigid truck 3.5-7.5 t GVW,Diesel,60,17,0.08,0.096,,78,258,335
+Europe & South America,Rigid truck 3.5-7.5 t GVW,CNG,60,17,0.084,,,86,231,317
+Europe & South America,Rigid truck 7.5-12 t GVW,Diesel,60,17,0.053,0.064,,52,172,223
+Europe & South America,Rigid truck 7.5-12 t GVW,CNG,60,17,0.056,,,58,154,211
+Europe & South America,Rigid truck 12-20 t GVW,Diesel,60,17,0.046,0.055,,44,147,191
+Europe & South America,Rigid truck 12-20 t GVW,CNG,60,17,0.048,,,51,131,181
+Europe & South America,Rigid truck 20-26 t GVW,Diesel,60,17,0.033,0.04,,32,107,139
+Europe & South America,Rigid truck 20-26 t GVW,CNG,60,17,0.036,,,37,99,136
+Europe & South America,Rigid truck 20-26 t GVW,LNG,60,17,0.037,,,47,105,152
+Europe & South America,Rigid truck 26-32 t GVW,Diesel,60,17,0.03,0.036,,29,95,125
+Europe & South America,Rigid truck 26-32 t GVW,Diesel,72,30,0.029,0.035,,29,95,123
+Europe & South America,Arctic truck up to 34 t GVW,Diesel,60,17,0.03,0.036,,29,95,124
+Europe & South America,Arctic truck up to 34 t GVW,Diesel,72,30,0.029,0.035,,29,95,123
+Europe & South America,Arctic truck 34-40 t GVW,Diesel,60,17,0.024,0.029,,23,78,101
+Europe & South America,Arctic truck 34-40 t GVW,Diesel,72,30,0.024,0.029,,23,78,101
+Europe & South America,Arctic truck 40 t GVW incl. lightweight trailer,Diesel,100,38,0.019,0.023,,19,62,80
+Europe & South America,Arctic truck 40�44 t GVW,Diesel,30,9,0.034,0.041,,33,110,143
+Europe & South America,Arctic truck 40�44 t GVW,Diesel,60,17,0.021,0.026,,21,69,89
+Europe & South America,Arctic truck 40�44 t GVW,Diesel,100,38,0.018,0.022,,18,59,77
+Europe & South America,Arctic truck 40�44 t GVW,Diesel,72,30,0.021,0.026,,21,69,90
+Europe & South America,Arctic truck up to 60 t GVW,Diesel,60,17,0.017,0.02,,16,54,70
+Europe & South America,Arctic truck up to 60 t GVW,Diesel,100,38,0.014,0.017,,14,46,60
+Europe & South America,Arctic truck up to 60 t GVW,Diesel,72,30,0.017,0.02,,16,54,70
+Europe & South America,Arctic truck up to 72 t GVW,Diesel,100,38,0.012,0.015,,11,36,47
+Europe & South America,Arctic truck up to 72 t GVW,Diesel,72,30,0.014,0.017,,13,42,55
+Europe & South America,Van < 3.5 t,Electricity,,,,,1.2,,,
+Europe & South America,Rigid truck 3.5�7.5 t GVW,Electric,30,9,,,0.86,,,
+Europe & South America,Rigid truck 3.5�7.5 t GVW,Electric,60,17,,,0.44,,,
+Europe & South America,Rigid truck 7.5-12 t GVW,Electric,30,9,,,0.65,,,
+Europe & South America,Rigid truck 7.5-12 t GVW,Electric,60,17,,,0.34,,,
+Europe & South America,Rigid truck 12-20t GVW,Electric,30,9,,,0.4,,,
+Europe & South America,Rigid truck 12-20t GVW,Electric,60,17,,,0.22,,,
+Europe & South America,Rigid truck 26-40t GVW,Electric,30,9,,,0.28,,,
+Europe & South America,Rigid truck 26-40t GVW,Electric,60,17,,,0.16,,,
+China,Rigid Truck LDT 3.5-4.5 t GVW,Diesel,93,19.5,0.113,0.136,,109.61,360.83,470.44
+China,Rigid Truck MDT 4.5-5.5 t GVW,Diesel,93,19.5,0.101,0.121,,97.15,319.79,416.94
+China,Rigid Truck MDV 5.5-7 t GVW,Diesel,93,19.5,0.097,0.117,,93.37,307.37,400.74
+China,Rigid Truck MDV 7-8.5 t GVW,Diesel,93,19.5,0.075,0.091,,72.33,238.08,310.41
+China,Rigid Truck MDV 8.5-10.5 t GVW,Diesel,93,19.5,0.063,0.076,,60.88,200.39,261.27
+China,Rigid Truck MDV 10.5-12.5 t GVW,Diesel,93,19.5,0.056,0.068,,53.99,177.72,231.7
+China,Rigid Truck HDV 12.5-16 t GVW,Diesel,93,19.5,0.052,0.062,,49.39,162.57,211.96
+China,Rigid Truck HDV 16-20 t GVW,Diesel,93,19.5,0.037,0.045,,35.5,116.85,152.34
+China,Rigid Truck HDV 20-25 t GVW,Diesel,93,19.5,0.026,0.031,,24.85,81.81,106.67
+China,Rigid Truck HDV 25-31 t GVW,Diesel,93,19.5,0.022,0.027,,21.25,69.96,91.21
+China,Rigid Truck HDV >31 t GVW,Diesel,93,19.5,0.023,0.028,,22.24,73.2,95.44
+China,Rigid Truck HDV up to 18 t GVW,Diesel,93,19.5,0.038,0.046,,36.7,120.81,157.51
+China,Rigid Truck HDV 18-27 t GVW,Diesel,93,19.5,0.026,0.032,,24.99,82.26,107.25
+China,Rigid Truck HDV 27-35 t GVW,Diesel,93,19.5,0.024,0.029,,22.54,74.21,96.75
+China,Rigid Truck HDV 35-40 t GVW,Diesel,93,19.5,0.02,0.024,,18.84,62.02,80.86
+China,Articulated Truck HDV 40.0-43.0 t GVW,Diesel,93,19.5,0.019,0.023,,18.22,59.96,78.18
+China,Articulated Truck HDV 43.0-46.0 t GVW,Diesel,93,19.5,0.018,0.022,,17.49,57.57,75.05
+China,Articulated Truck HDV 46.0-49.0 t GVW,Diesel,93,19.5,0.018,0.022,,17.34,57.09,74.43
+China,Articulated Truck HDV above 49.0 t GVW,Diesel,93,19.5,0.018,0.022,,17.22,56.67,73.89
+China,Dump Truck LDT 3.5-4.5 t GVW,Diesel,93,19.5,0.135,0.162,,130.16,428.46,558.61
+China,Dump Truck MDT 4.5-5.5 t GVW,Diesel,93,19.5,0.1,0.121,,96.73,318.43,415.16
+China,Dump Truck MDV 5.5-7.0 t GVW,Diesel,93,19.5,0.095,0.114,,91.62,301.6,393.22
+China,Dump Truck MDV 7.0-8.5 t GVW,Diesel,93,19.5,0.074,0.089,,71.07,233.96,305.04
+China,Dump Truck MDV 8.5-10.5 t GVW,Diesel,93,19.5,0.064,0.077,,61.12,201.19,262.31
+China,Dump Truck MDV 10.5-12.5 t GVW,Diesel,93,19.5,0.055,0.066,,52.39,172.48,224.87
+China,Dump Truck HDV 12.5-16.0 t GVW,Diesel,93,19.5,0.05,0.06,,48.04,158.14,206.18
+China,Dump Truck HDV 16.0-20.0 t GVW,Diesel,93,19.5,0.037,0.045,,35.6,117.21,152.81
+China,Dump Truck HDV 20.0-25.0 t GVW,Diesel,93,19.5,0.024,0.029,,23.28,76.63,99.91
+China,Dump Truck HDV 25.0-31.0  t GVW,Diesel,93,19.5,0.023,0.027,,21.47,70.68,92.15
+China,Dump Truck HDV above 31.0 t GVW,Diesel,93,19.5,0.02,0.024,,18.62,61.3,79.92
+China,Articulated Truck 29-31 t GVW,LNG,93,19.5,0.021,0.049,,24.66,57.83,82.49
+China,Articulated Truck 31-60 t GVW,LNG,93,19.5,0.017,0.04,,19.87,46.58,66.45
+China,Dump Truck 14-24 t GVW,LNG,93,19.5,0.048,0.114,,57.89,135.72,193.61
+China,Dump Truck 24-25 t GVW,LNG,93,19.5,0.024,0.056,,28.63,67.12,95.75
+China,Dump Truck 25-29 t GVW,LNG,93,19.5,0.02,0.049,,24.69,57.88,82.57
+China,Dump Truck 29-31 t GVW,LNG,93,19.5,0.017,0.04,,20.38,47.79,68.17
+China,Dump Truck 31-60 t GVW,LNG,93,19.5,0.014,0.032,,16.4,38.44,54.83
+China,Rigid Truck 14-24 t GVW,LNG,93,19.5,0.048,0.114,,58.28,136.64,194.92
+China,Rigid Truck 24-25 t GVW,LNG,93,19.5,0.024,0.056,,28.63,67.12,95.75
+China,Rigid Truck 25-29 t GVW,LNG,93,19.5,0.02,0.048,,24.14,56.59,80.73
+China,Rigid Truck 29-31 t GVW,LNG,93,19.5,0.017,0.041,,20.49,48.04,68.53
+China,Rigid Truck 31-60 t GVW,LNG,93,19.5,0.014,0.033,,16.52,38.74,55.26
+China,Truck LDV up to 4.5 t GVW,Electricity,93,19.5,,,,135.44,,135.44
+China,Truck MDV 4.5-12.0 t GVW,Electricity,93,19.5,,,,74.87,,74.87
+China,Truck HDV above 12 t GVW,Electricity,93,19.5,,,,145.25,,145.25
+China,Truck LDV up to 4.5 t GVW,Hydrogen,93,19.5,0.03,,,328.1,,328.1
+China,Truck MDV 4.5-12.0 t GVW,Hydrogen,93,19.5,0.016,,,173.1,,173.1
+China,Truck HDV above 12 t GVW,Hydrogen,93,19.5,0.018,,,198.86,,198.86
