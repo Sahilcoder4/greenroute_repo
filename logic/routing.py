@@ -16,6 +16,7 @@ def get_coordinates(city_name):
 
     lat = results[0]['geometry']['lat']
     lng = results[0]['geometry']['lng']
+    st.write(f"🔎 {city_name} → lat: {lat}, lng: {lng}")
     coords = [lng, lat]  # [lon, lat]
 
     # Snap to nearest routable road using ORS
