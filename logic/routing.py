@@ -31,12 +31,7 @@ def get_coordinates(city_name):
     lng = results[0]['geometry']['lng']
     return [lng, lat]  # ORS expects [lon, lat]
 
-# def get_coordinates(city_name):
-#     geolocator = Nominatim(user_agent="greenroute")
-#     location = geolocator.geocode(city_name)
-#     if not location:
-#         raise Exception(f"Could not geocode: {city_name}")
-#     return [location.longitude, location.latitude]  # [lng, lat]
+
 
 
 def extract_route_info(route):
